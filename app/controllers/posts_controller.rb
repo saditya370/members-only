@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  
+  before_action :authenticate_user!,only: %i[show]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -8,8 +10,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    
   end
-
+  
   # GET /posts/new
   def new
     @post = Post.new
@@ -56,6 +59,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
